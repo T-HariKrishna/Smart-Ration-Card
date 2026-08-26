@@ -1,37 +1,37 @@
 // AP Rice Card Generator Logic
 
 // Default Avatar SVG representing the Head of Family
-const DEFAULT_HOF_PHOTO_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="100%" height="100%">
-    <rect width="100" height="120" fill="#a4d1f2"/>
-    <!-- Hair back -->
-    <circle cx="50" cy="52" r="30" fill="#18181b"/>
-    <!-- Neck -->
-    <rect x="42" y="72" width="16" height="15" fill="#92400e"/>
-    <!-- Shoulders & Saree -->
-    <path d="M 12 115 C 12 90 28 82 50 82 C 72 82 88 90 88 115 Z" fill="#ea580c"/>
-    <path d="M 48 82 C 58 82 72 88 88 115 L 42 115 Z" fill="#ca8a04"/> 
-    <circle cx="62" cy="98" r="3" fill="#facc15"/>
-    <circle cx="70" cy="106" r="3" fill="#facc15"/>
-    <!-- Face -->
-    <ellipse cx="50" cy="50" rx="21" ry="25" fill="#d97706"/>
-    <!-- Hair front -->
-    <path d="M 29 48 C 29 30 36 22 50 22 C 64 22 71 30 71 48 C 71 35 64 28 50 28 C 36 28 29 35 29 48 Z" fill="#18181b"/>
-    <!-- Bindi -->
-    <circle cx="50" cy="40" r="2.5" fill="#dc2626"/>
-    <!-- Eyes -->
-    <ellipse cx="42" cy="50" rx="3.5" ry="1.8" fill="#ffffff"/>
-    <circle cx="42" cy="50" r="1.5" fill="#18181b"/>
-    <ellipse cx="58" cy="50" rx="3.5" ry="1.8" fill="#ffffff"/>
-    <circle cx="58" cy="50" r="1.5" fill="#18181b"/>
-    <!-- Eyebrows -->
-    <path d="M 36 46 C 39 44 45 45 47 47" fill="none" stroke="#18181b" stroke-width="1.2" stroke-linecap="round"/>
-    <path d="M 64 46 C 61 44 55 45 53 47" fill="none" stroke="#18181b" stroke-width="1.2" stroke-linecap="round"/>
-    <!-- Nose -->
-    <path d="M 50 47 L 50 56 L 47 57" fill="none" stroke="#78350f" stroke-width="1.5" stroke-linecap="round"/>
-    <circle cx="52" cy="56" r="0.8" fill="#facc15"/> 
-    <!-- Lips -->
-    <path d="M 44 63 C 46 66 54 66 56 63 C 55 61 45 61 44 63 Z" fill="#dc2626"/>
-</svg>`;
+// const DEFAULT_HOF_PHOTO_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="100%" height="100%">
+//     <rect width="100" height="120" fill="#a4d1f2"/>
+//     <!-- Hair back -->
+//     <circle cx="50" cy="52" r="30" fill="#18181b"/>
+//     <!-- Neck -->
+//     <rect x="42" y="72" width="16" height="15" fill="#92400e"/>
+//     <!-- Shoulders & Saree -->
+//     <path d="M 12 115 C 12 90 28 82 50 82 C 72 82 88 90 88 115 Z" fill="#ea580c"/>
+//     <path d="M 48 82 C 58 82 72 88 88 115 L 42 115 Z" fill="#ca8a04"/> 
+//     <circle cx="62" cy="98" r="3" fill="#facc15"/>
+//     <circle cx="70" cy="106" r="3" fill="#facc15"/>
+//     <!-- Face -->
+//     <ellipse cx="50" cy="50" rx="21" ry="25" fill="#d97706"/>
+//     <!-- Hair front -->
+//     <path d="M 29 48 C 29 30 36 22 50 22 C 64 22 71 30 71 48 C 71 35 64 28 50 28 C 36 28 29 35 29 48 Z" fill="#18181b"/>
+//     <!-- Bindi -->
+//     <circle cx="50" cy="40" r="2.5" fill="#dc2626"/>
+//     <!-- Eyes -->
+//     <ellipse cx="42" cy="50" rx="3.5" ry="1.8" fill="#ffffff"/>
+//     <circle cx="42" cy="50" r="1.5" fill="#18181b"/>
+//     <ellipse cx="58" cy="50" rx="3.5" ry="1.8" fill="#ffffff"/>
+//     <circle cx="58" cy="50" r="1.5" fill="#18181b"/>
+//     <!-- Eyebrows -->
+//     <path d="M 36 46 C 39 44 45 45 47 47" fill="none" stroke="#18181b" stroke-width="1.2" stroke-linecap="round"/>
+//     <path d="M 64 46 C 61 44 55 45 53 47" fill="none" stroke="#18181b" stroke-width="1.2" stroke-linecap="round"/>
+//     <!-- Nose -->
+//     <path d="M 50 47 L 50 56 L 47 57" fill="none" stroke="#78350f" stroke-width="1.5" stroke-linecap="round"/>
+//     <circle cx="52" cy="56" r="0.8" fill="#facc15"/> 
+//     <!-- Lips -->
+//     <path d="M 44 63 C 46 66 54 66 56 63 C 55 61 45 61 44 63 Z" fill="#dc2626"/>
+// </svg>`;
 
 // Sample Data Matching User Images
 const SAMPLE_DATA = {

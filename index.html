@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AP Smart Rice Card Generator</title>
+    <!-- Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=NTR&family=Ramabhadra&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FontAwesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Telugu:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Control Panel (Left Sidebar) -->
+      <aside class="control-panel">
+        <header class="panel-header">
+          <div class="logo-area">
+            <div class="logo-icon">
+              <i class="fa-solid fa-address-card"></i>
+            </div>
+            <div>
+              <h1>AP Rice Card</h1>
+              <p>Smart Generator & Previewer</p>
+            </div>
+          </div>
+        </header>
+
+        <nav class="tab-nav">
+          <button class="tab-btn active" onclick="switchTab('front-tab')">
+            <i class="fa-solid fa-id-card"></i> Front Details
+          </button>
+          <button class="tab-btn" onclick="switchTab('back-tab')">
+            <i class="fa-solid fa-list-check"></i> Back Details
+          </button>
+          <button class="tab-btn" onclick="switchTab('settings-tab')">
+            <i class="fa-solid fa-sliders"></i> Card Config
+          </button>
+        </nav>
+
+        <main class="panel-content">
+          <!-- FRONT TAB -->
+          <section id="front-tab" class="tab-content active">
+            <div class="form-group-title">Card Classification</div>
+            <div class="input-grid">
+              <div class="form-group">
+                <label for="input-card-type">Card Type / రకం</label>
+                <input
+                  type="text"
+                  id="input-card-type"
+                  value="NFSA/AAY"
+                  placeholder="e.g. NFSA/AAY"
+                />
+              </div>
+              <div class="form-group">
+                <label for="input-card-no">Card Number / సంఖ్య</label>
+                <input
+                  type="text"
+                  id="input-card-no"
+                  value="2814262002"
+                  placeholder="10-digit number"
+                />
+              </div>
+            </div>
+
+            <div class="form-group-title">Head of Family Details</div>
+            <div class="form-group">
+              <label for="input-hof-name">Name (Telugu/English) / పేరు</label>
+              <input
+                type="text"
+                id="input-hof-name"
+                value="తలారి లక్ష్మిదేవి"
+                placeholder="e.g. తలారి లక్ష్మిదేవి"
+              />
+            </div>
+
+            <div class="input-grid">
+              <div class="form-group">
+                <label for="input-hof-dob">DOB / పుట్టిన తేదీ</label>
+                <input
+                  type="text"
+                  id="input-hof-dob"
+                  value="11-05-1975"
+                  placeholder="DD-MM-YYYY"
+                />
+              </div>
+              <div class="form-group">
+                <label for="input-hof-age">Age / వయస్సు</label>
+                <input
+                  type="number"
+                  id="input-hof-age"
+                  value="50"
+                  placeholder="Age in Years"
+                />
+              </div>
+            </div>
+
+            <div class="input-grid">
+              <div class="form-group">
+                <label for="input-hof-gender">Gender / లింగం</label>
+                <select id="input-hof-gender">
+                  <option value="Female / ఆడ" selected>Female / ఆడ</option>
+                  <option value="Male / మగ">Male / మగ</option>
+                  <option value="Other / ఇతర">Other / ఇతర</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="input-members-count">Total Members / సభ్యులు</label>
+                <input
+                  type="number"
+                  id="input-members-count"
+                  value="4"
+                  placeholder="Total family members"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Head of Family Photo / ఫోటో</label>
+              <div class="photo-upload-zone">
+                <div class="upload-preview" id="upload-preview-container">
+                  <i class="fa-regular fa-image"></i>
+                </div>
+                <div class="upload-controls">
+                  <label for="input-photo" class="upload-btn">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Upload Photo
+                  </label>
+                  <input
+                    type="file"
+                    id="input-photo"
+                    accept="image/*"
+                    style="display: none"
+                  />
+                  <p class="upload-tip">Square image recommended.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group-title">Shop Details</div>
+            <div class="input-grid">
+              <div class="form-group">
+                <label for="input-shop-id">Shop ID / దుకాణం ఐడి</label>
+                <input
+                  type="text"
+                  id="input-shop-id"
+                  value="1346031"
+                  placeholder="e.g. 1346031"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="input-shop-address"
+                >Shop Address / దుకాణం చిరునామా</label
+              >
+              <textarea
+                id="input-shop-address"
+                rows="2"
+                placeholder="e.g. అంకిరెడ్డిపల్లి 1, కొలిమిగుండ్ల"
+              >
+అంకిరెడ్డిపల్లి 1, కొలిమిగుండ్ల</textarea
+              >
+            </div>
+          </section>
+
+          <!-- BACK TAB -->
+          <section id="back-tab" class="tab-content">
+            <div class="form-group-title">Family Members (Excluding Head)</div>
+            <div class="family-members-editor">
+              <div class="members-table-container">
+                <table class="editor-table" id="editor-members-table">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Name / పేరు</th>
+                      <th>DOB/Age</th>
+                      <th>Gender</th>
+                      <th>Relation</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="editor-members-body">
+                    <!-- Dynamic rows will be added here -->
+                  </tbody>
+                </table>
+              </div>
+              <button
+                type="button"
+                class="btn-secondary add-row-btn"
+                onclick="openAddMemberModal()"
+              >
+                <i class="fa-solid fa-plus"></i> Add Family Member
+              </button>
+            </div>
+
+            <div class="form-group-title">Offices & Address Details</div>
+            <div class="form-group">
+              <label for="input-permanent-address"
+                >Permanent Address / శాశ్వత చిరునామా</label
+              >
+              <textarea
+                id="input-permanent-address"
+                rows="3"
+                placeholder="Permanent address in Telugu"
+              >
+4-149-ఎ, అంకిరెడ్డిపల్లె కొలిమిగుండ్ల, కొలిమిగుండ్ల, కర్నూలు జిల్లా, ఆంధ్ర</textarea
+              >
+            </div>
+            <div class="form-group">
+              <label for="input-tahsildar-office"
+                >Tahsildar Office / తహసిల్దార్ కార్యాలయం</label
+              >
+              <input
+                type="text"
+                id="input-tahsildar-office"
+                value="కొలిమిగుండ్ల"
+                placeholder="e.g. కొలిమిగుండ్ల"
+              />
+            </div>
+          </section>
+
+          <!-- SETTINGS TAB -->
+          <section id="settings-tab" class="tab-content">
+            <div class="form-group-title">Security & Identifiers</div>
+            <div class="form-group">
+              <label for="input-card-serial"
+                >Card Serial No (e.g. V12427558)</label
+              >
+              <input
+                type="text"
+                id="input-card-serial"
+                value="V12427558"
+                placeholder="e.g. V12427558"
+              />
+            </div>
+            <div class="form-group">
+              <label for="input-qr-content">QR Code Content</label>
+              <input
+                type="text"
+                id="input-qr-content"
+                value="https://epos.ap.gov.in/ricecard/V12427558"
+                placeholder="QR Code encoded value"
+              />
+            </div>
+            <div class="form-group">
+              <label for="input-toll-free">Toll Free Helpline</label>
+              <input
+                type="text"
+                id="input-toll-free"
+                value="1967"
+                placeholder="e.g. 1967"
+              />
+            </div>
+
+            <div class="form-group-title">Customizations</div>
+            <div class="input-grid">
+              <div class="form-group">
+                <label for="input-card-scale">Card Scale Zoom</label>
+                <input
+                  type="range"
+                  id="input-card-scale"
+                  min="0.8"
+                  max="1.5"
+                  step="0.05"
+                  value="1.0"
+                  oninput="adjustCardScale(this.value)"
+                />
+                <div class="scale-value" id="scale-val-indicator">100%</div>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer class="panel-footer">
+          <button class="btn-primary" onclick="printCard()">
+            <i class="fa-solid fa-print"></i> Print Card (PDF)
+          </button>
+          <button class="btn-outline" onclick="resetToSample()">
+            <i class="fa-solid fa-rotate-left"></i> Reset Sample
+          </button>
+        </footer>
+      </aside>
+
+      <!-- Preview Area (Right Side) -->
+      <main class="preview-area">
+        <header class="preview-header">
+          <div class="preview-title">
+            <h2>Live Card Preview</h2>
+            <p>Accurate visual representation at 300 DPI</p>
+          </div>
+          <div class="view-toggle">
+            <button
+              class="toggle-btn active"
+              id="btn-view-both"
+              onclick="toggleCardView('both')"
+            >
+              Both Sides
+            </button>
+            <button
+              class="toggle-btn"
+              id="btn-view-front"
+              onclick="toggleCardView('front')"
+            >
+              Front Only
+            </button>
+            <button
+              class="toggle-btn"
+              id="btn-view-back"
+              onclick="toggleCardView('back')"
+            >
+              Back Only
+            </button>
+          </div>
+        </header>
+
+        <div class="preview-scroll-container">
+          <div class="cards-wrapper" id="cards-wrapper">
+            <!-- RICE CARD FRONT -->
+            <div class="rice-card" id="rice-card-front">
+              <div class="card-front-header">
+                <!-- AP Seal Emblem SVG -->
+                <div class="logo-left">
+                  <img
+                    src="images/Emblem_of_Andhra_Pradesh.png"
+                    alt="National Emblem of India"
+                  />
+                </div>
+                <div class="header-text">
+                  <div class="gov-title">
+                    Government of Andhra Pradesh / ఆంధ్రప్రదేశ్ ప్రభుత్వం
+                  </div>
+                  <div class="dept-title">
+                    Consumer Affairs, Food & Civil Supplies Department
+                  </div>
+                  <div class="dept-title-telugu">
+                    వినియోగదారుల వ్యవహారాలు, ఆహార మరియు పౌరసరఫరాల శాఖ
+                  </div>
+                  <div class="act-title">
+                    National Food Security Act, 2013 / జాతీయ ఆహార భద్రతా చట్టం,
+                    2013
+                  </div>
+                </div>
+
+                <div class="logo-right">
+                  <!-- India National Emblem SVG -->
+                  <img
+                    src="Emblem_of_India.svg"
+                    alt="National Emblem of India"
+                  />
+                </div>
+              </div>
+
+              <!-- Card Ribbon Header -->
+              <div class="card-ribbon">
+                <div class="ribbon-pill">RICE CARD / రైస్ కార్డు</div>
+              </div>
+
+              <!-- Card Content Grid -->
+              <div class="card-body-content">
+                <!-- Left: Details Form -->
+                <div class="details-left">
+                  <div class="detail-row">
+                    <div class="lbl">బియ్యం కార్డు రకం</div>
+                    <div class="sep">:</div>
+                    <div class="val" id="card-type-val">NFSA/AAY</div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="lbl">బియ్యం కార్డు నెం.</div>
+                    <div class="sep">:</div>
+                    <div class="val highlight-num" id="card-no-val">
+                      2814262002
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="lbl">కుటుంబ పెద్ద పేరు</div>
+                    <div class="sep">:</div>
+                    <div
+                      class=""
+                      id="hof-name-val"
+                      style="
+                        font-weight: bolder;
+                        font-size: 18px;
+                        margin-left: -20px;
+                      "
+                    >
+                      తలారి లక్ష్మిదేవి
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="lbl">పుట్టిన తేదీ /వయస్సు</div>
+                    <div class="sep">:</div>
+                    <div
+                      class="val"
+                      id="hof-dob-age-val"
+                      style="font-size: 15px; color: black"
+                    >
+                      11-05-1975/50 సం.
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="lbl">కుటుంబ పెద్ద లింగం</div>
+                    <div class="sep">:</div>
+                    <div class="val" id="hof-gender-val">Female / ఆడ</div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="lbl">కుటుంబ సభ్యులు</div>
+                    <div class="sep">:</div>
+                    <div class="val" id="members-count-val">4</div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="lbl">దుకాణం ఐడి</div>
+                    <div class="sep">:</div>
+                    <div class="val" id="shop-id-val">1346031</div>
+                  </div>
+                  <div class="detail-row align-start">
+                    <div class="lbl">దుకాణం చిరునామా</div>
+                    <div class="sep">:</div>
+                    <div class="val font-telugu" id="shop-address-val">
+                      అంకిరెడ్డిపల్లి 1, కొలిమిగుండ్ల
+                    </div>
+                  </div>
+                </div>
+
+                <div class="body-ap-emblem">
+                  <img src="Emblem_of_Andhra_Pradesh.png" alt="AP Emblem" />
+                </div>
+
+                <!-- Right: Photo, QR Code, Serial -->
+                <div class="details-right">
+                  <div class="photo-frame">
+                    <img
+                      id="card-photo"
+                      src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100%' height='100%' fill='%23e2e8f0'/><text x='50%' y='50%' font-size='10' font-family='sans-serif' fill='%2364748b' text-anchor='middle' dominant-baseline='middle'>PHOTO</text></svg>"
+                      alt="Head of Family Photo"
+                    />
+                  </div>
+                  <div class="qr-container">
+                    <div id="card-qrcode"></div>
+                    <div class="serial-vertical" id="card-serial-val-vertical">
+                      V12427558
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Bottom Border -->
+              <div class="card-footer-bar"></div>
+            </div>
+
+            <!-- RICE CARD BACK -->
+            <div class="rice-card" id="rice-card-back">
+              <!-- Red ribbon header -->
+              <div class="back-header-ribbon">కుటుంబ సభ్యుల వివరాలు</div>
+
+              <div class="back-body-content">
+                <!-- Members Table -->
+                <table class="members-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 8%">సంఖ్య</th>
+                      <th style="width: 44%">సభ్యుని పేరు</th>
+                      <th style="width: 24%">పుట్టిన తేదీ / వయస్సు</th>
+                      <th style="width: 10%">లింగము</th>
+                      <th style="width: 14%">కుటుంబపెద్దతో సంబంధము</th>
+                    </tr>
+                  </thead>
+                  <tbody id="card-members-rows">
+                    <!-- Dynamically inserted from JS -->
+                  </tbody>
+                </table>
+
+                <!-- Address and Helpline section -->
+                <div class="back-footer-section">
+                  <div class="address-col">
+                    <div class="address-item">
+                      <span class="lbl-bold">శాశ్వత చిరునామా :</span>
+                      <span class="val-text font-telugu" id="back-address-val">
+                        4-149-ఎ, అంకిరెడ్డిపల్లె కొలిమిగుండ్ల, కొలిమిగుండ్ల,
+                        కర్నూలు జిల్లా, ఆంధ్ర
+                      </span>
+                    </div>
+
+                    <div class="address-item" style="margin-top: 5px">
+                      <span class="lbl-bold">తహసిల్దార్ కార్యాలయం:</span>
+                      <span
+                        class="val-text font-telugu"
+                        id="back-tahsildar-val"
+                      >
+                        కొలిమిగుండ్ల
+                      </span>
+                    </div>
+                  </div>
+                  <div class="helpline-col">
+                    <div
+                      class="serial-horizontal"
+                      id="back-serial-val-horizontal"
+                    >
+                      V12427558
+                    </div>
+                    <div class="helpline-banner">
+                      <div class="helpline-title">Toll Free Helpline</div>
+                      <div class="phone-box">
+                        <i class="fa-solid fa-phone"></i>
+                        <span id="back-toll-free-val">1967</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Bottom Border -->
+              <div class="card-footer-bar"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Add Member Modal Dialog -->
+    <div class="modal-backdrop" id="add-member-modal">
+      <div class="modal-box">
+        <header class="modal-header">
+          <h3>Add Family Member</h3>
+          <button class="close-btn" onclick="closeAddMemberModal()">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </header>
+        <main class="modal-content">
+          <div class="form-group">
+            <label for="modal-member-name"
+              >Member Name / సభ్యుని పేరు (Telugu/English)</label
+            >
+            <input
+              type="text"
+              id="modal-member-name"
+              placeholder="e.g. తలారి హరికృష్ణ"
+            />
+          </div>
+          <div class="input-grid">
+            <div class="form-group">
+              <label for="modal-member-dob">DOB / పుట్టిన తేదీ</label>
+              <input
+                type="text"
+                id="modal-member-dob"
+                placeholder="DD-MM-YYYY"
+              />
+            </div>
+            <div class="form-group">
+              <label for="modal-member-age">Age / వయస్సు</label>
+              <input
+                type="number"
+                id="modal-member-age"
+                placeholder="e.g. 22"
+              />
+            </div>
+          </div>
+          <div class="input-grid">
+            <div class="form-group">
+              <label for="modal-member-gender">Gender / లింగము</label>
+              <select id="modal-member-gender">
+                <option value="మగ">Male / మగ</option>
+                <option value="ఆడ">Female / ఆడ</option>
+                <option value="ఇతర">Other / ఇతర</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="modal-member-relation"
+                >Relation with HOF / సంబంధము</label
+              >
+              <input
+                type="text"
+                id="modal-member-relation"
+                placeholder="e.g. కొడుకు (Son), భర్త (Husband)"
+              />
+            </div>
+          </div>
+        </main>
+        <footer class="modal-footer">
+          <button class="btn-outline" onclick="closeAddMemberModal()">
+            Cancel
+          </button>
+          <button class="btn-primary" onclick="submitAddMember()">
+            Add Member
+          </button>
+        </footer>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

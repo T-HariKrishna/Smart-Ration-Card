@@ -1,0 +1,1236 @@
+/* AP Rice Card Generator Stylesheet */
+
+/* RESET & BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-dark: #0f172a;
+  --bg-panel: #1e293b;
+  --bg-card: #f8fafc;
+  --text-light: #f8fafc;
+  --text-muted: #94a3b8;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --success: #10b981;
+  --border-color: #334155;
+  --input-bg: #0f172a;
+
+  /* Card Theme Colors */
+  --card-red: rgb(230, 23, 78);
+  --card-yellow-bg: #fff8de;
+  --card-blue-helpline: #0d47a1;
+}
+
+body {
+  font-family: "Noto Sans Telugu", sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  overflow: hidden;
+  height: 100vh;
+}
+
+.logo-left img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-left: 20px;
+}
+
+.logo-right img {
+  width: 60px;
+  height: 75px;
+  margin-right: 20px;
+  object-fit: contain;
+}
+
+/* APP LAYOUT */
+.app-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* SIDEBAR CONTROL PANEL */
+.control-panel {
+  width: 420px;
+  min-width: 420px;
+  background-color: var(--bg-panel);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.panel-header {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--primary), #60a5fa);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: white;
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+}
+
+.logo-area h1 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.logo-area p {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* TABS */
+.tab-nav {
+  display: flex;
+  background-color: rgba(15, 23, 42, 0.4);
+  padding: 4px;
+  margin: 15px 20px 5px;
+  border-radius: 8px;
+  gap: 2px;
+}
+
+.tab-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 10px 8px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.tab-btn:hover {
+  color: var(--text-light);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.tab-btn.active {
+  color: var(--text-light);
+  background-color: var(--bg-panel);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* PANEL CONTENT & FORM FIELDS */
+.panel-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.form-group-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-top: 20px;
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+  padding-bottom: 4px;
+}
+
+.form-group-title:first-child {
+  margin-top: 0;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-light);
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* PHOTO UPLOAD ZONE */
+.photo-upload-zone {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: var(--input-bg);
+  border: 1px dashed var(--border-color);
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.upload-preview {
+  width: 60px;
+  height: 60px;
+  background-color: var(--bg-panel);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.upload-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.upload-preview i {
+  font-size: 24px;
+  color: var(--text-muted);
+}
+
+.upload-controls {
+  flex: 1;
+}
+
+.upload-btn {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--text-light);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.upload-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.upload-tip {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* PANEL FOOTER BUTTONS */
+.panel-footer {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  background-color: rgba(15, 23, 42, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-light);
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.btn-outline:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: var(--text-muted);
+}
+
+.btn-secondary {
+  background-color: #334155;
+  color: var(--text-light);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-secondary:hover {
+  background-color: #475569;
+}
+
+/* FAMILY MEMBERS EDITOR IN SIDEBAR */
+.family-members-editor {
+  margin-bottom: 16px;
+}
+
+.members-table-container {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: var(--input-bg);
+  margin-bottom: 10px;
+}
+
+.editor-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  text-align: left;
+}
+
+.editor-table th,
+.editor-table td {
+  padding: 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.editor-table th {
+  background-color: var(--bg-panel);
+  color: var(--text-muted);
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+}
+
+.editor-table td {
+  color: var(--text-light);
+}
+
+.action-icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--danger);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.action-icon-btn:hover {
+  background-color: rgba(239, 68, 68, 0.15);
+}
+
+.add-row-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* SETTINGS ZOOM RANGE INDICATOR */
+.scale-value {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  text-align: right;
+}
+
+/* PREVIEW AREA */
+.preview-area {
+  flex: 1;
+  background-color: var(--bg-dark);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.preview-header {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(30, 41, 59, 0.4);
+}
+
+.preview-title h2 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.preview-title p {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.view-toggle {
+  display: flex;
+  background-color: var(--bg-panel);
+  padding: 3px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+.toggle-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.toggle-btn.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+.preview-scroll-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center center;
+  transition: transform 0.2s ease;
+}
+
+/* HIGH FIDELITY RICE CARD DESIGN */
+.rice-card {
+  width: 538.5px; /* Exact scaled width matching ~85.6mm (1.58 ratio) */
+  height: 340.2px; /* Exact scaled height matching ~54mm */
+  background-color: white;
+  color: #000;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* FRONT CARD HEADER */
+.card-front-header {
+  background: linear-gradient(180deg, var(--card-yellow-bg) 0%, #fff5d1 100%);
+  background: rgb(255, 255, 121);
+  height: 100px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  border-bottom: 4px solid var(--card-red);
+  position: relative;
+  z-index: 2;
+  /* margin-top: 2px; */
+}
+
+.logo-left {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+.ap-emblem-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.header-text {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gov-title {
+  font-family: "Noto Sans Telugu", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #194a94;
+  /* letter-spacing: -0.2px; */
+}
+
+.dept-title {
+  font-family: "Arial Narrow", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--card-red);
+  margin-top: 1px;
+}
+
+.dept-title-telugu {
+  font-family: "Noto Sans Telugu", sans-serif;
+  font-size: 13.5px;
+  font-weight: bold;
+  color: var(--card-red);
+  line-height: 1.1;
+  margin-top: 6px;
+}
+
+.act-title {
+  font-family: "Noto Sans Telugu", sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: black;
+  font-weight: 800;
+  margin-top: 1px;
+}
+
+.logo-right {
+  width: 42px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6px;
+}
+
+.national-emblem-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* CARD RIBBON (RICE CARD BADGE) */
+.card-ribbon {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+  margin-left: -28px;
+  margin-top: -12px;
+  /* border: 1px solid black; */
+}
+
+.ribbon-pill {
+  background-color: var(--card-red);
+  background: rgb(230, 23, 78);
+  color: white;
+  /* font-family: "Ramabhadra", sans-serif; */
+  width: 189px;
+  font-size: 14px;
+  /* display: inline-block; */
+  transform: scaleX(1.3);
+  transform-origin: left;
+  font-weight: bold;
+  padding: 3px 24px 2px 24px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  border: 1.5px solid white;
+  text-align: center;
+  margin-left: -25px;
+}
+
+/* CARD BODY (FRONT) */
+.card-body-content {
+  flex: 1;
+  display: flex;
+  padding: 12px 14px 10px 18px;
+  position: relative;
+  z-index: 2;
+  background-color: white;
+  font-family: "Noto Sans Telugu", sans-serif;
+}
+
+/* Left fields column */
+.details-left {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  line-height: 0;
+  font-weight: bold;
+  /* border: 1px solid black; */
+  font-family: "Noto Sans Telugu", sans-serif;
+}
+
+.detail-row {
+  /* border: 1px solid black; */
+  display: flex;
+  /* font-size: 13.5px; */
+  line-height: 0.1;
+  align-items: center;
+  color: #000;
+  font-weight: 800;
+  gap: 40px;
+}
+
+.detail-row.align-start {
+  align-items: flex-start;
+}
+.detail-row .val.highlight-num {
+  font-size: 17px;
+  font-weight: 800;
+  /* letter-spacing: 0.5px; */
+}
+.detail-row .val {
+  font-family: "Inter", "Noto Sans Telugu", sans-serif;
+  font-size: 14px;
+  font-weight: bolder;
+  font-family: "Arial Narrow ", sans-serif;
+  /* border: 1px solid black; */
+  margin-left: -20px;
+  font-weight: bolder;
+  font-family: "Inter", "Noto Sans Telugu", sans-serif;
+}
+
+.detail-row .lbl {
+  font-family: "Noto Sans Telugu", sans-serif;
+  font-size: 14px;
+  /* border: 1px solid black; */
+  width: 200px;
+}
+
+.detail-row .sep {
+  font-family: "Inter", sans-serif;
+  padding-left: 15px;
+}
+
+/* Right visuals column */
+.details-right {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  /* line-height: 0.1; */
+  justify-content: space-between;
+}
+
+.photo-frame {
+  width: 100px;
+  height: 114px;
+  border: 1px solid #94a3b8;
+  background-color: #f1f5f9;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -20px;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =--------------------- */
+
+.card-body-content {
+  position: relative;
+  z-index: 0;
+}
+
+.body-ap-emblem {
+  position: absolute;
+  left: 82%;
+  top: 32%;
+  width: 130px;
+  height: 115px;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.body-ap-emblem img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  transform: scale(1.9);
+  opacity: 0.08;
+  pointer-events: none;
+}
+.details-left,
+.details-right,
+.members-table {
+  position: relative;
+  z-index: 1;
+}
+
+.qr-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+#card-qrcode {
+  width: 77px;
+  height: 77px;
+  /* padding: 2px; */
+  /* border: 1px solid #e2e8f0; */
+  background: white;
+}
+
+#card-qrcode img {
+  width: 100%;
+  height: 100%;
+}
+
+.serial-vertical {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 11px;
+  font-weight: bold;
+  font-family: "Noto Sans Telugu", sans-serif;
+  color: black;
+  opacity: 0.7;
+  letter-spacing: 1.9px;
+  white-space: nowrap;
+  line-height: 1;
+  margin-bottom: 0.9px;
+  /* border: 1px solid black; */
+}
+
+/* CARD BACK STYLING */
+.back-header-ribbon {
+  background-color: var(--card-red);
+  color: white;
+  font-family: "Noto Sans Telugu", sans-serif;
+  font-size: 19px;
+  font-weight: bold;
+  text-align: center;
+  padding: 5px 0 6px 0;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  border-bottom: 1.5px solid white;
+}
+
+.back-body-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 12px 6px 12px;
+  background-color: white;
+  justify-content: space-between;
+}
+
+/* Card table */
+.members-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1.5px solid #000;
+}
+
+#card-members-rows td {
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  border-top: none;
+  border-bottom: none;
+}
+
+.members-table th,
+.members-table td {
+  border: 1.2px solid #000;
+  padding: 2px 4px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.members-table th {
+  font-family: "Noto Sans Telugu", sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  background-color: #f8fafc;
+  text-align: center;
+  padding: 2px 2px;
+}
+
+.members-table td {
+  font-family: "Noto Sans Telugu", sans-serif;
+  font-weight: 700;
+}
+
+.members-table td:nth-child(1),
+.members-table td:nth-child(3),
+.members-table td:nth-child(4) {
+  text-align: center;
+}
+.members-table td:nth-child(2),
+.members-table td:nth-child(5) {
+  padding-left: 10px;
+}
+
+.members-table td.font-telugu {
+  font-family: "Noto Sans Telugu", sans-serif;
+  font-size: 12px;
+  /* font-weight: bold; */
+}
+.members-table td:first-child,
+.members-table td:nth-child(3) {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+}
+.members-table td {
+  font-family: "Noto Sans Telugu", sans-serif;
+  font-size: 17px;
+  line-height: 19px;
+  padding: 0.5px;
+  height: 26px;
+}
+.members-table td:nth-child(2),
+.members-table td:nth-child(4),
+.members-table td:nth-child(5) {
+  font-family: "Inter", "Noto Sans Telugu", sans-serif;
+  font-size: 14px;
+}
+
+.members-table.compact-members tbody td {
+  font-size: 11px;
+  line-height: 3px;
+  height: 18px;
+}
+
+/* Back footer (Address & Helpline) */
+.back-footer-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 6px;
+}
+
+.address-col {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.address-item {
+  margin-top: -60px;
+  font-family: "Noto Sans Telugu", sans-serif;
+  /* font-size: 20px; */
+  line-height: 1;
+  /* font-weight: 900; */
+  color: #000;
+}
+
+.address-item .lbl-bold {
+  font-family: "Noto Sans Telugu", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.address-item .val-text {
+  font-family: "Noto Sans Telugu", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* .address-item .val-text.font-telugu {
+  font-family: "Noto Sans Telugu", sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+} */
+.detail-row {
+  display: grid;
+  grid-template-columns: 90px 12px minmax(0, 1fr);
+  width: 100%;
+  align-items: start;
+}
+
+.lbl {
+  min-width: 0;
+}
+
+.sep {
+  text-align: center;
+}
+
+.val {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.helpline-col {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.serial-horizontal {
+  font-size: 11px;
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+  color: #000;
+  letter-spacing: 0.5px;
+  margin-top: -10px;
+  /* margin-bottom: 2px; */
+}
+
+.helpline-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.helpline-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 2px;
+  text-transform: capitalize;
+
+  font-family: "Arial Narrow", Arial, sans-serif, Helvetica, sans-serif;
+}
+
+.phone-box {
+  background-color: var(--card-blue-helpline);
+  background-color: rgb(15, 22, 119);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 12px;
+  border-radius: 3px;
+  font-family: "Noto Sans Telugu", sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.phone-box i {
+  font-size: 12px;
+  background-color: white;
+  color: var(--card-blue-helpline);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Card bottom red border */
+.card-footer-bar {
+  height: 13px;
+  background-color: var(--card-red);
+  background: rgb(230, 23, 78);
+  width: 100%;
+}
+
+/* VIEW LAYOUT CLASSIFICATIONS */
+.preview-area[data-view="front"] #rice-card-back {
+  display: none;
+}
+.preview-area[data-view="back"] #rice-card-front {
+  display: none;
+}
+
+/* ADD MEMBER MODAL DIALOG */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-box {
+  width: 480px;
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  transform: translateY(20px);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-backdrop.active .modal-box {
+  transform: translateY(0);
+}
+
+.modal-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: var(--text-light);
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+.modal-footer {
+  padding: 16px 20px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  background-color: rgba(15, 23, 42, 0.1);
+}
+
+.modal-footer button {
+  width: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* CUSTOM SCROLLBARS */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* PRINT-SPECIFIC CSS STYLES */
+@media print {
+  body,
+  html {
+    background-color: white !important;
+    color: black !important;
+    height: auto;
+    overflow: visible;
+  }
+
+  .app-container {
+    display: block;
+    height: auto;
+    width: auto;
+  }
+
+  .control-panel,
+  .preview-header,
+  .modal-backdrop {
+    display: none !important;
+  }
+
+  .preview-area {
+    background-color: white !important;
+    overflow: visible;
+    padding: 0;
+    display: block;
+  }
+
+  .preview-scroll-container {
+    padding: 0;
+    display: block;
+    overflow: visible;
+  }
+
+  .cards-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Vertical gap between cards for printing */
+    align-items: center;
+    justify-content: center;
+    transform: scale(1) !important; /* Force 100% size for print */
+  }
+
+  .rice-card {
+    box-shadow: none !important;
+    border: 1px solid #cbd5e1; /* Subtle border for cutting guide */
+    page-break-inside: avoid;
+  }
+}
+
+.body-ap-emblem img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+
+  transform: scale(2.1);
+  opacity: 0.25;
+  margin-top: 50px;
+  margin-left: -150px;
+  /* Don't affect surrounding layout */
+  pointer-events: none;
+}
+
+.lbl,
+.card-body-content {
+  font-family: "Noto Sans Telugu", "Inter", sans-serif;
+  /* border: 1px solid #0d47a1; */
+}
+
+.cards-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  /* gap: 20px; */
+  width: 100%;
+}
+
+.rice-card {
+  flex-shrink: 0;
+}
+@media print {
+  @page {
+    size: A3;
+    margin: 5mm;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .cards-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4mm;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* .rice-card {
+    width: auto;
+
+    box-sizing: border-box;
+    overflow: hidden;
+  } */
+}

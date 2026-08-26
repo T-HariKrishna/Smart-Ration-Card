@@ -65,15 +65,9 @@ const SAMPLE_DATA = {
       gender: "మగ",
       relation: "భర్త",
     },
+    
     {
       no: "04",
-      name: "తలారి రాముడు",
-      dobAge: "12-05-1964/61",
-      gender: "మగ",
-      relation: "భర్త",
-    },
-    {
-      no: "05",
       name: "తలారి వీర శంకర్",
       dobAge: "25-02-1998/27",
       gender: "మగ",
